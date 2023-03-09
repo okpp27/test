@@ -1,1 +1,213 @@
-hallowo world
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Feb 23 19:41:46 2023
+
+@author: keiki
+"""
+
+import tkinter as tk
+from tkinter import filedialog
+import matplotlib.pyplot as plt
+import numpy as np
+
+def select_file():
+    file_path = filedialog.askopenfilename(filetypes=[("ASC Files", "*.asc")])
+    plot_data(file_path)
+
+def plot_data(file_path):
+    y_data = []
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        for line in lines[7:1108]:
+            y_data.append(float(line.strip().split()[0]))
+    y_data = np.array(y_data)
+    x_data = np.arange(1097, -4, -1)
+
+    plt.plot(x_data, y_data, color='k')
+    plt.gca().invert_xaxis()
+    plt.axvline(x=286, ymin=0, ymax=5000, linestyle='--', color='g', zorder=0)
+    plt.title('SUR', fontname='Arial')
+    plt.xlabel('Binding Energy /eV', fontname='Arial')
+    plt.ylabel('Intensity', fontname='Arial')
+    plt.tick_params(axis='x', direction='in')
+    plt.tick_params(axis='y', direction='in')
+    plt.ylim(0, 200000)
+    plt.tick_params(labelleft=False)
+    plt.show()
+
+
+#ここからC1s
+    y_data = []
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        for line in lines[1117:1317]:
+            y_data.append(float(line.strip().split()[0]))
+    y_data = np.array(y_data)
+    x_data = np.arange(295, 275, -0.1)
+
+    plt.plot(x_data, y_data, color='k')
+
+
+
+
+    plt.title('C1s', fontname='Arial')
+    plt.xlabel('Binding Energy /eV', fontname='Arial')
+    plt.ylabel('Intensity /a.u.', fontname='Arial')
+    # x軸のメモリを内向きにする
+    plt.tick_params(axis='x', direction='in')
+
+
+    # y軸のメモリを内向きにする
+    plt.tick_params(axis='y', direction='in')
+
+
+
+    # x軸の範囲を指定
+    plt.xlim(275, 295)
+
+    # x軸のメモリを設定
+    plt.xticks(np.arange(275, 296, 5))
+
+    #x軸を反転させる
+    plt.gca().invert_xaxis()
+    # y軸の数値を非表示にする
+    plt.tick_params(labelleft=False)
+
+    plt.show()
+    
+#ここからO1s 
+    y_data = []
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        for line in lines[1326:1526]:
+            y_data.append(float(line.strip().split()[0]))
+
+    y_data = np.array(y_data)
+
+    x_data = np.arange(540, 520, -0.1)
+
+
+
+
+    plt.plot(x_data, y_data, color='k')
+    
+    plt.title('O1s', fontname='Arial')
+    plt.xlabel('Binding Energy /eV', fontname='Arial')
+    plt.ylabel('Intensity /a.u.', fontname='Arial')
+    # x軸のメモリを内向きにする
+    plt.tick_params(axis='x', direction='in')
+    
+    
+    # y軸のメモリを内向きにする
+    plt.tick_params(axis='y', direction='in')
+    
+    
+    
+    # x軸の範囲を指定
+    plt.xlim(520, 540)
+    
+    # x軸のメモリを設定
+    plt.xticks(np.arange(520, 541, 5))
+    
+    #x軸を反転させる
+    plt.gca().invert_xaxis()
+    # y軸の数値を非表示にする
+    plt.tick_params(labelleft=False)
+    
+    plt.show()   
+        
+#Si2p
+
+    y_data = []
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        for line in lines[1535:1735]:
+            y_data.append(float(line.strip().split()[0]))
+      
+    y_data = np.array(y_data)
+
+    x_data = np.arange(111, 91, -0.1)
+
+
+
+    plt.plot(x_data, y_data, color='k')
+
+
+
+
+    plt.title('Si2p', fontname='Arial')
+    plt.xlabel('Binding Energy /eV', fontname='Arial')
+    plt.ylabel('Intensity /a.u.', fontname='Arial')
+    # x軸のメモリを内向きにする
+    plt.tick_params(axis='x', direction='in')
+
+
+    # y軸のメモリを内向きにする
+    plt.tick_params(axis='y', direction='in')
+
+
+
+    # x軸の範囲を指定
+    plt.xlim(90, 115)
+
+    # x軸のメモリを設定
+    plt.xticks(np.arange(90, 111, 5))
+
+    #x軸を反転させる
+    plt.gca().invert_xaxis()
+    # y軸の数値を非表示にする
+    plt.tick_params(labelleft=False)
+
+    plt.show()
+   
+ #S2p  
+    y_data = []
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        for line in lines[1744:1944]:
+            y_data.append(float(line.strip().split()[0]))
+ 
+    y_data = np.array(y_data)
+
+    x_data = np.arange(177, 157, -0.1)
+    
+
+    plt.plot(x_data, y_data, color='k')
+    
+    
+    
+    
+    plt.title('S2p', fontname='Arial')
+    plt.xlabel('Binding Energy /eV', fontname='Arial')
+    plt.ylabel('Intensity /a.u.', fontname='Arial')
+    # x軸のメモリを内向きにする
+    plt.tick_params(axis='x', direction='in')
+    
+    
+    # y軸のメモリを内向きにする
+    plt.tick_params(axis='y', direction='in')
+    
+    
+    
+    # x軸の範囲を指定
+    plt.xlim(155, 180)
+    
+    # x軸のメモリを設定
+    plt.xticks(np.arange(160, 176, 5))
+    
+    #x軸を反転させる
+    plt.gca().invert_xaxis()
+    # y軸の数値を非表示にする
+    plt.tick_params(labelleft=False)
+    
+    plt.show()
+        
+
+root = tk.Tk()
+root.geometry("200x100")
+
+select_file_button = tk.Button(root, text="Select File", command=select_file)
+select_file_button.pack(pady=20)
+
+root.mainloop()
+
